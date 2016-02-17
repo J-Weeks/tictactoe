@@ -1,6 +1,8 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
+// try for abit more modularized next tie
+// great mobile first
 
 $background-color: #000;
 $font-color: #458b00;
@@ -128,6 +130,7 @@ img {
 }
 
 // this will be applied for browsers up to 563px wide
+// nice
 @media (max-width: 500px) {
   .board {
     cursor: pointer;

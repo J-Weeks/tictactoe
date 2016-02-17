@@ -164,7 +164,11 @@
           <div class='square bot center' id=7></div>
           <div class='square bot right' id=8></div>
         </div>
+        <!-- // Data attributes don't number them with id's-->
+        <!--There is a better way to do this, something like grabbing the board
+      object creating an array-->
         <div class='restart'></div>
+        <!--??? maybe I'll get to this in the JS-->
         <!-- game board -->
         <!-- score board -->
         <div class="progress">
@@ -181,6 +185,8 @@
             <td>Ties</td>
             <td> O </td>
           </tr>
+
+          <!--  Genereally want to default to classes where possible-->
           <tr>
             <td id='xWins'>0</td>
             <td id='ties'>0</td>
@@ -205,10 +211,13 @@
                   <div class="col-sm-10">
                     <input type="email" class="form-control" id="inputEmail3" placeholder="email" name="credentials[email]" value="" aria-describedby="helpBlock1">
                     <span id="helpBlock1" class="sign-up-hint">Don't use a real email address. This connection is not secure.</span>
+                    <!--"help-block-1" would be a the standard way in the future-->
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="inputPassword3" class="col-sm-2 form-control-label">Password</label>
+                  <!--was this custom? you can refactor these classes to have more
+                semantic names using SASS-->
                   <div class="col-sm-10">
                     <input type="password" class="form-control" id="inputPassword3" placeholder="password" name="credentials[password]" value="" aria-describedby="helpBlock2">
                     <span id="helpBlock2" class="sign-up-hint">Don't use a real password. This connection is not secure.</span>

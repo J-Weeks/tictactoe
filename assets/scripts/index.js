@@ -8,7 +8,8 @@ require('./example');
 
 // load sass manifest
 require('../styles/index.scss');
-
+// in the future try to be more modular break your code up into multiple files
+//based on behavior
 const myApp = {
   baseUrl: 'http://tic-tac-toe.wdibos.com',
 };
@@ -16,6 +17,8 @@ const myApp = {
 $(document).ready(() => {
   // initial page setup
 
+// use lets instead of vars.  Best to prepare for what you'll have to be doing
+// in the future
   var count = 0;
   var marker = 'X';
   var players = 1;
@@ -32,6 +35,7 @@ $(document).ready(() => {
   var board = $('.board').children();
   var archivedBoard = [];
   var winningCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
+  // The above line makes me happy
   var timerSeconds = 0;
 
   var toggleLoggedIn = function toggleLoggedIn() {
@@ -47,7 +51,8 @@ $(document).ready(() => {
     $('.logged-out').show();
     $('.logged-in').hide();
   };
-
+// I'm still early in this so maybe I'll come to it but an easier solution may
+// be to give them all one class name in the html and hide that.
   var hidePageElements = function hidePageElements() {
     $('.restart').hide();
     $('.welcome').hide();
@@ -72,6 +77,7 @@ $(document).ready(() => {
   };
 
   var timer = setInterval(reprint,500);
+// typically seeing a setInterval makes me think there could be a better way
 
   var displayMessage = function displayMessage(type) {
     $(function () {
@@ -91,6 +97,7 @@ $(document).ready(() => {
   } else {
     toggleLoggedIn();
   }
+  // nice touch. elegant and short
 
   // miscellaneous; causes the navbar to collapse
   // when you click a button in an overlaying modal
@@ -103,6 +110,7 @@ $(document).ready(() => {
     displayMessage('.deathmatch-started');
   });
 
+//woah, why the sudden var/let switch? threw me off a bit
   let updateScoreboard = function updateScoreboard() {
     $('#xWins').text(xWinCount);
     $('#oWins').text(oWinCount);
@@ -214,7 +222,8 @@ $(document).ready(() => {
       displayMessage('.message-account-exists');
     });
   });
-
+// usually I would say ajax inside .done is a bad idea but this is a good use
+// case.  There are other ways however.
   // ^^ signup actions ^^
 
   // vv signin actions vv
@@ -238,6 +247,8 @@ $(document).ready(() => {
       displayMessage('.welcome');
     }).fail(function (jqxhr) {
       $('.wrong-password').show();
+      //what if it fails for other reasons aside from the password, does the
+      //user still get the "wrong password" message
       console.error(jqxhr);
     });
   });
@@ -268,6 +279,10 @@ $(document).ready(() => {
         }
 
         $('.all-games').append('<tr><td>' + data.games[i].id + '</td><td>' + playerX + '</td><td>' + playerO + '</td><td>' + data.games[i].cells + '<td><button data-dismiss="modal" id=' + data.games[i].id + '>View</button></td></tr>');
+        // So this is spaghetti code. Thought right now we haven't taught you the
+        // tools to clean this up yet.  Very ambitious though.  We'll get into
+        //things like handlebars and templating engines later.  I think that will
+        // really clean up a bunch of minor things for you.
       }
     }).fail(function (jqxhr) {
       console.error(jqxhr);
@@ -413,6 +428,7 @@ $(document).ready(() => {
       return 'width: ' + oPercent + '%';
     });
   };
+  //really nice.  This is clever way to do it.
 
   var announceTie = function announceTie() {
     clearInterval(timer);
@@ -450,7 +466,7 @@ $(document).ready(() => {
       a = board[winningCombos[i][0]];
       b = board[winningCombos[i][1]];
       c = board[winningCombos[i][2]];
-
+// very nice
       if ($(a).text() !== '' && $(a).text() === $(b).text() && $(a).text() === $(c).text()) {
         $(a).addClass('blue');
         $(b).addClass('blue');
